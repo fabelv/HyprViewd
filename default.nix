@@ -45,7 +45,7 @@
   # mkDerivation is the main function used to build packages with the Stdenv
   package = mcc-env.mkDerivation (self: {
     # TODO: set project name
-    name = "cpp-nix-app";
+    name = "hypr-viewd";
     version = "0.0.3";
 
     # Programs and libraries used/available at build-time
@@ -56,6 +56,7 @@
       cmake
       gnumake
       clang
+      vscode-extensions.vadimcn.vscode-lldb
     ];
 
     # Programs and libraries used by the new derivation at run-time

@@ -1,2 +1,2 @@
-add_executable(cpp-nix-app main.cpp)
-target_link_libraries(cpp-nix-app fmt::fmt)
+add_executable(hypr-viewd main.cpp)
+target_link_libraries(hypr-viewd fmt::fmt)
