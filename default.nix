@@ -43,13 +43,8 @@
   # mkDerivation is the main function used to build packages with the Stdenv
   package = mcc-env.mkDerivation (self: {
     # TODO: set project name
-<<<<<<< HEAD
-    name = "cpp-nix-app";
-    version = "0.0.1";
-=======
     name = "hypr-viewd";
-    version = "0.0.3";
->>>>>>> origin/master
+    version = "0.0.1";
 
     # Programs and libraries used/available at build-time
     nativeBuildInputs = with pkgs; [
@@ -60,11 +55,13 @@
       gnumake
       clang
       vscode-extensions.vadimcn.vscode-lldb
+      lldb_14
     ];
 
     # Programs and libraries used by the new derivation at run-time
     buildInputs = with pkgs; [
       fmt
+      wlroots
     ];
 
     # builtins.path is used since source of our package is the current directory: ./
@@ -129,6 +126,18 @@
     packages = with pkgs; [
       kotur-nixpkgs.dinosay # packet loads from the custom nixpkgs (kotur-nixpkgs)
     ];
+    
+    shellHook = ''
+      # Set WLR_ROOT for wlroots headers & libraries
+      export WLR_ROOT=${pkgs.wlroots}
+      export C_INCLUDE_PATH=$WLR_ROOT/include:$C_INCLUDE_PATH
+      export LIBRARY_PATH=$WLR_ROOT/lib:$LIBRARY_PATH
+      echo "Using WLR_ROOT: $WLR_ROOT"
+
+      # Set LLDB_PATH for Neovim debugging
+      export LLDB_PATH=${pkgs.lldb_14}/bin/lldb-vscode
+      echo "Using LLDB_PATH: $LLDB_PATH"
+    '';
 
   };
 in
