@@ -1,4 +1,5 @@
 {
+
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.miniCompileCommands = {
     url = github:danielbarter/mini_compile_commands/v0.6;

@@ -31,8 +31,6 @@
     },
 }: let
   # Using mini_compile_commands to export compile_commands.json
-  # https://github.com/danielbarter/mini_compile_commands/
-  # Look at the README.md file for instructions on generating compile_commands.json
   mcc-env = (pkgs.callPackage miniCompileCommands {}).wrap pkgs.stdenv;
   mcc-hook = (pkgs.callPackage miniCompileCommands {}).hook;
 
@@ -46,7 +44,7 @@
   package = mcc-env.mkDerivation (self: {
     # TODO: set project name
     name = "cpp-nix-app";
-    version = "0.0.3";
+    version = "0.0.1";
 
     # Programs and libraries used/available at build-time
     nativeBuildInputs = with pkgs; [
